@@ -10,9 +10,10 @@ parsed_id_secret <- jsonlite::fromJSON(content(id_secret, "text"), simplifyVecto
 return(str(parsed_id_secret))
 }
 
-reg_client(user_key = "6b5ca32b8f8d13304350e27de5f71bd2",
-           username = "filip.wastberg@demoskop.se",
-           password = "fra602nmiT")
+# Example
+#reg_client(user_key = user_key,
+#           username = username,
+#           password = password)
 
 # The original curl code
 #curl -X POST \
