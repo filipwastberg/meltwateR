@@ -9,6 +9,7 @@
 library(httr)
 library(data.table)
 library(dplyr)
+library(purrr)
 
 search_meltwater <- function(url, user_key, token){
 # The GET call using httr
@@ -48,6 +49,8 @@ df$document_key_phrases <- paste(substring(df$document_key_phrases, 6,
 df$document_matched_keywords <- paste(substring(df$document_matched_keywords, 6,
                                                 length(df$document_matched_keywords)-1),
                                  collapse = ",")
+
+df$document_tags <- c("")
 
 # Unlist all columns 
 df <- df %>%
