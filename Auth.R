@@ -27,10 +27,10 @@ return(paste("Bearer", parsed_token$access_token))
 #--header 'user-key: <user_key>' \
 #--data 'grant_type=client_credentials&scope=search'
 
-# curl kod
+# curl code (invalid credentials)
 #curl -X POST \
 ##https://api.meltwater.com/oauth2/token \
-#--user '553a4177f9d48b7a3f267a64:PSXZRmj5C9tfKgSP4dZ8Pj34K8fidnrrXg==' \
+#--user '553a417sdghahadg3f267a64:PSXZRmj5C9tfsdfsdfasgashK8fidnrrXg==' \
 #--header 'content-type: application/x-www-form-urlencoded' \
-#--header 'user-key: 6b5ca32b8f8d13304350e27de5f71bd2' \
+#--header 'user-key: 6b5ca32b8f8xxs3fdsfds450e27de5f71bd2' \
 #--data 'grant_type=client_credentials&scope=search'
