@@ -2,7 +2,6 @@
 library(httr)
 
 access_token <- function(client_id, client_secret, user_key){
-Auth <- function(client_id, client_secret, user_key){
 token <- POST(url = "https://api.meltwater.com/oauth2/token",
      authenticate(user = client_id, password = client_secret),
      add_headers('user-key' = user_key,
@@ -11,7 +10,6 @@ token <- POST(url = "https://api.meltwater.com/oauth2/token",
 
 parsed_token <- jsonlite::fromJSON(content(token, "text"), simplifyVector = FALSE)
 
-}
 return(paste("Bearer", parsed_token$access_token))
 }
 
