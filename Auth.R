@@ -15,9 +15,9 @@ parsed_token <- jsonlite::fromJSON(content(token, "text"), simplifyVector = FALS
 return(paste("Bearer", parsed_token$access_token))
 }
 
-token <- access_token(client_id = "553a4177f9d48b7a3f267a64",
-     client_secret = "PSXZRmj5C9tfKgSP4dZ8Pj34K8fidnrrXg==",
-     user_key = "6b5ca32b8f8d13304350e27de5f71bd2")
+token <- access_token(client_id = client_id,
+     client_secret = client_secret,
+     user_key = user_key)
 
 #curl -X POST \
 #--user '<client_id>:<client_secret>' \
