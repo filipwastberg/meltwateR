@@ -1,8 +1,5 @@
 #' @title Access Meltwater token
 #' @description access_token() generates a Bearer token that is saved to your .Renvironment file. It is valid for 1 hour. If you run out of time, just run the function again.
-#' @param client_id your id, generated from reg_client()
-#' @param client_secret your secret, generated from reg_client
-#' @param user_key your user key generated from https://developer.meltwater.com
 #'
 #' @import httr, jsonlite
 
