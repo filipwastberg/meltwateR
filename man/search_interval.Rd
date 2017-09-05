@@ -22,10 +22,10 @@ search_interval(keyword, start_date, end_date, type = "news",
 search_interval() generates a data frame containing the number of articles or social posts written about your keyword during an interval of time
 }
 \examples{
-df <- search_interval(user_key = user_key, token = token,
+df <- search_interval(
 keyword = "demoskop",
 start_date = "2017-07-01",
 end_date = "2017-07-13",
-type = "news_article",
+type = "social",
 granularity = "DAY")
 }
