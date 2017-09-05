@@ -7,7 +7,7 @@
 #' @import httr, jsonlite
 
 access_token <- function(client_id, client_secret, user_key){
-token <- POST(url = "https://api.meltwater.com/oauth2/token",
+token <- POST(url = "https://api.meltwater.com/oauth2/access_token",
      authenticate(user = client_id, password = client_secret),
      add_headers('user-key' = user_key,
                  'content-type' = "application/x-www-form-urlencoded"),
