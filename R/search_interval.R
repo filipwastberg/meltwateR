@@ -3,7 +3,7 @@
 #' @param keyword the keyword you want to explore, e.g. "iphone"
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
-#' @param type "news_article", "social_post" or "all", defaults to "all"
+#' @param type "news" or "social"
 #' @param granularity defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are possible.
 #'
 #' @examples
