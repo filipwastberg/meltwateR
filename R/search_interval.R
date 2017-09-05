@@ -17,17 +17,16 @@
 #' granularity = "DAY")
 #' @import dplyr, jsonlite, httr, purrr, chron
 #'
-search_interval <- function(user_key, token, keyword,
-                     start_date, end_date, type = "all", granularity = "DAY"){
+search_interval <- function(keyword, start_date, end_date, type = "news", granularity = "DAY"){
 # manipulation of URL
-  url <- paste0("https://api.meltwater.com/v1/insights/intervals?keyword=", keyword, "&start_date=",
+  url <- paste0("https://api.meltwater.com/insights/v1/intervals/sum/source_reach?keyword=", keyword, "&start_date=",
                 start_date, "T00:00:00Z&end_date=", end_date, "T12:59:59Z&type=", type,
                 "&granularity=", granularity)
 
   # The GET call using httr
   resp <- GET(url = url,
-              add_headers('user-key' = user_key,
-                          'Authorization' = token,
+              add_headers('user-key' = Sys.getenv("meltwater_key"),
+                          'Authorization' = Sys.getenv("meltwater_token"),
                           'Accept' = "application/json"))
 
   if(resp$status_code == 400){
