@@ -19,7 +19,7 @@ search_documents(keyword, start_date, end_date, type = "news")
 search_documents() enables you to search every document containg a keyword during a specific time interval
 }
 \examples{
-df <- search_documents(user_key = user_key, token = token,
+df <- search_documents(
 keyword = "demoskop",
 start_date = "2017-07-01",
 end_date = "2017-07-13",
