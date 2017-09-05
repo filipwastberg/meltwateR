@@ -1,7 +1,5 @@
 #' @title Search counts of keyword during time interval
 #' @description search_interval() generates a data frame containing the number of articles or social posts written about your keyword during an interval of time
-#' @param user_key your user key generated from https://developer.meltwater.com
-#' @param token your token generated from access_token()
 #' @param keyword the keyword you want to explore, e.g. "iphone"
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
