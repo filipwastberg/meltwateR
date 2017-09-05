@@ -7,7 +7,7 @@
 #' @param end_date end date, in "1900-01-01" format
 #' @param type "news_article", "social_post" or "all", defaults to "all"
 #'
-#' @example
+#' @examples
 #' df <- search_documents(user_key = user_key, token = token,
 #' keyword = "demoskop",
 #' start_date = "2017-07-01",
@@ -16,16 +16,16 @@
 #'
 #' @import dplyr, jsonlite, httr, purrr, chron
 
-search_documents <- function(user_key, token, keyword, start_date, end_date, type = "all"){
+search_documents <- function(keyword, start_date, end_date, type = "news"){
 
-  url <- paste0("https://api.meltwater.com/v1/searches/documents?keyword=", keyword,
-                "&start_date=", start_date, "T00:00:00Z&end_date=", end_date,
+  url <- paste0("https://api.meltwater.com/search/v1/documents?keyword=%22", keyword,
+                "%22&start_date=", start_date, "T00:00:00Z&end_date=", end_date,
                 "T12:59:59Z&type=", type, "&page_size=100")
 
 # The GET call using httr
   resp <- GET(url = url,
-    add_headers('user-key' = user_key,
-                'Authorization' = token,
+    add_headers('user-key' = Sys.getenv("meltwater_key"),
+                'Authorization' = Sys.getenv("meltwater_token"),
                 'Accept' = "application/json"))
 
 if(resp$status_code == 400){
@@ -64,6 +64,8 @@ df$document_matched_keywords <- paste(substring(df$document_matched_keywords, 7,
                                  collapse = ",")
 
 df$document_tags <- c("")
+    
+df$document_authors <- as.character(df$document_authors)
 
 # Unlist all columns
 df <- df %>%
