@@ -19,7 +19,7 @@ Imports:
     dplyr,
     tidyr,
     jsonlite,
-    purr,
+    purrr,
     chron,
     httr (>= 1.1)
 LazyData: true
