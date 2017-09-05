@@ -8,8 +8,7 @@ Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
-Authors@R: c(
-        person("Filip", "Wastberg", email = "filip.wastberg@gmail.com", role = c("aut", "cre")),
+Authors@R: c(person("Filip", "Wastberg", email = "filip.wastberg@gmail.com", role = c("aut", "cre")),
 Maintainer: The package maintainer <filip.wastberg@gmail.com>
 Description: This package offers functions to interact with Meltwaters API in order to download
              Meltwaters media monitoring data to R.
