@@ -1,12 +1,26 @@
 Package: meltwateR
 Type: Package
 Title: What the Package Does (Title Case)
+Title: An API Client for Meltwaters media monitoring data
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
+Authors@R: c(
+        person("Filip", "Wastberg", email = "filip.wastberg@gmail.com", role = c("aut", "cre")),
+Maintainer: The package maintainer <filip.wastberg@gmail.com>
+Description: This package offers functions to interact with Meltwaters API in order to download
+             Meltwaters media monitoring data to R.
+License: BSD_2_clause + file LICENSE
 Encoding: UTF-8
+Imports:
+    dplyr,
+    tidyr,
+    jsonlite,
+    purr,
+    chron,
+    httr (>= 1.1)
 LazyData: true
 RoxygenNote: 6.0.1
