@@ -7,11 +7,7 @@
 #' @param granularity defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are available.
 #'
 #' @examples
-#' df <- interval_document_authors(
-#' keyword = "demoskop",
-#' start_date = "2017-07-01",
-#' end_date = "2017-07-13",
-#' type = "news_article")
+#' df <- interval_document_authors(keyword = "demoskop", start_date = "2017-07-01", end_date = "2017-07-13", type = "news_article")
 #' @import dplyr httr purrr chron
 #'
 interval_document_authors <- function(start_date, end_date, keyword = NULL, search_id = NULL, granularity = "DAY"){

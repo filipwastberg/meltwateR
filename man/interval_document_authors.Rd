@@ -22,9 +22,5 @@ interval_document_authors(start_date, end_date, keyword = NULL,
 interval_document_authors() generates a data frame containing the authors of documents written about a keyword or search id during an interval of time
 }
 \examples{
-df <- interval_document_authors(
-keyword = "demoskop",
-start_date = "2017-07-01",
-end_date = "2017-07-13",
-type = "news_article")
+df <- interval_document_authors(keyword = "demoskop", start_date = "2017-07-01", end_date = "2017-07-13", type = "news_article")
 }
