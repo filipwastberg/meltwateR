@@ -7,5 +7,5 @@
 access_token()
 }
 \description{
-access_token() generates a Bearer token, which has to be renewed every hour.
+access_token() generates a Bearer token that is saved to your .Renvironment file. It is valid for 1 hour. If you run out of time, just run the function again.
 }
