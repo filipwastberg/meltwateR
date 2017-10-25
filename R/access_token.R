@@ -1,7 +1,7 @@
 #' @title Access Meltwater token
 #' @description access_token() generates a Bearer token that is saved to your .Renvironment file. It is valid for 1 hour. If you run out of time, just run the function again.
 #'
-#' @import httr, jsonlite
+#' @import httr
 
 access_token <- function(){
 token <- POST(url = "https://api.meltwater.com/oauth2/access_token",
@@ -14,5 +14,7 @@ parsed_token <- jsonlite::fromJSON(content(token, "text"), simplifyVector = FALS
 
 token <- paste("Bearer", parsed_token$access_token)
 
-return(Sys.setenv("meltwater_token" = token))
+Sys.setenv("meltwater_token" = token)
+
+return(Sys.getenv("meltwater_token"))
 }
