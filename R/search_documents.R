@@ -1,31 +1,31 @@
 #' Search documents
 #' @description search_documents() enables you to search every document containg a keyword during a specific time interval
-#' @param user_key your user key generated from https://developer.meltwater.com
-#' @param token your token generated from access_token()
 #' @param keyword the keyword you want to explore
+#' @param search_id a search ID
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
-#' @param type "news_article", "social_post" or "all", defaults to "all"
+#' @param type "news" or "social"
 #'
-#' @examples
-#' df <- search_documents(user_key = user_key, token = token,
-#' keyword = "demoskop",
-#' start_date = "2017-07-01",
-#' end_date = "2017-07-13",
-#' type = "news_article")
-#'
-#' @import dplyr, jsonlite, httr, purrr, chron
+#' @examples df <- search_documents(start_date = "2017-07-01", end_date = "2017-07-13",keyword = "demoskop", type = "news")
+#' @import dplyr httr purrr chron
 
-search_documents <- function(keyword, start_date, end_date, type = "news"){
+search_documents <- function(start_date, end_date, keyword = NULL, search_id = NULL, type = "news", page_size = "30"){
 
-  url <- paste0("https://api.meltwater.com/search/v1/documents?keyword=%22", keyword,
-                "%22&start_date=", start_date, "T00:00:00Z&end_date=", end_date,
-                "T12:59:59Z&type=", type, "&page_size=100")
+  if(is.null(keyword)){
+    url <- paste0("https://api.meltwater.com/search/v1/documents?search_id=", search_id,
+                  "&start_date=", start_date, "T00%3A00%3A00Z&end_date=", end_date,
+                  "T23%3A59%3A59Z&type=", type, "&page_size=", page_size)
+    
+  }else{
+    url <- paste0("https://api.meltwater.com/search/v1/documents?keyword=", keyword,
+                  "&start_date=", start_date, "T00%3A00%3A00Z&end_date=", end_date,
+                  "T23%3A59%3A59Z&type=", type, "&page_size=", page_size)
+  }
 
 # The GET call using httr
   resp <- GET(url = url,
     add_headers('user-key' = Sys.getenv("meltwater_key"),
-                'Authorization' = Sys.getenv("meltwater_token"),
+                'Authorization' = access_token(),
                 'Accept' = "application/json"))
 
 if(resp$status_code == 400){
@@ -49,27 +49,47 @@ df <- resp_json[-1] %>%
   as.data.frame()
 
 # Create a time variable
-df$time <- substring(df$document_publish_date, 12, 19) %>% times()
+df$time <- substring(df$document_publish_date, 12, 19) %>% chron::times()
 
 # Date column to R date format
 df$document_publish_date <- substring(df$document_publish_date, 1, 10) %>%
   as.Date()
 
-# Manually unlist document key phrases and key words
-df$document_key_phrases <- paste(substring(df$document_key_phrases, 7,
-                                           length(df$document_key_phrases)-1),
-                                 collapse = ",")
-df$document_matched_keywords <- paste(substring(df$document_matched_keywords, 7,
-                                                length(df$document_matched_keywords)-2),
-                                 collapse = ",")
+document_key_phrases <- df$document_key_phrases %>%
+  flatten_list()
+
+colnames(document_key_phrases) <- paste0("key_phrase", colnames(document_key_phrases))
+#
+document_matched_keywords <- df$document_matched_keywords %>%
+  flatten_list()
+
+colnames(document_matched_keywords) <- paste0("keyword", colnames(keyword))
+#
 
 df$document_tags <- c("")
-    
-df$document_authors <- as.character(df$document_authors)
+#
+document_authors <- df$document_authors %>%
+  flatten_list()
 
+colnames(document_authors) <- paste0("document_author", colnames(document_authors))
+
+df <- cbind(df, document_key_phrases, document_matched_keywords, document_authors) %>%
+  select(-document_key_phrases, -document_matched_keywords, -document_authors)
+
+rm(document_key_phrases, document_matched_keywords, document_authors)
+# Manually unlist document key phrases and key words
+#df$document_key_phrases <- paste(substring(df$document_key_phrases, 7,
+#                                           length(df$document_key_phrases)-1),
+#                                 collapse = ",")
+#df$document_matched_keywords <- paste(substring(df$document_matched_keywords, 7,
+#                                                length(df$document_matched_keywords)-2),
+#                                 collapse = ",")#
+#
+#df$document_authors <- as.character(df$document_authors)
+#
 # Unlist all columns
-df <- df %>%
-  mutate_all(funs(unlist(.)))
+#df <- df %>%
+#  mutate_all(funs(unlist(.)))
 }
 return(df)
 }
