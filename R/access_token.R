@@ -2,6 +2,8 @@
 #' @description access_token() generates a Bearer token that is saved to your .Renvironment file. It is valid for 1 hour. If you run out of time, just run the function again.
 #'
 #' @import httr
+#' 
+#' @export
 
 access_token <- function(){
 token <- POST(url = "https://api.meltwater.com/oauth2/access_token",

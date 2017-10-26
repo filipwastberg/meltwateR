@@ -14,6 +14,8 @@ interval_sum_reach(start_date, end_date, keyword = NULL, search_id = NULL,
 
 \item{keyword}{the keyword you want to explore, e.g. "iphone"}
 
+\item{search_id}{an ID for a search in Meltwater}
+
 \item{type}{defaults to NULL and returns "all", can be news" or "social"}
 
 \item{granularity}{defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are possible.}
@@ -22,5 +24,6 @@ interval_sum_reach(start_date, end_date, keyword = NULL, search_id = NULL,
 interval_sum_reach() generates a data frame with the sum of reach over a period for a keyword
 }
 \examples{
-df <- interval_sum_reach(start_date = "2017-07-01", keyword = "demoskop", type = "news", granularity = "DAY")
+df <- interval_sum_reach(start_date = "2017-07-01",
+ keyword = "demoskop", type = "news", granularity = "DAY")
 }

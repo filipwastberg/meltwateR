@@ -1,15 +1,14 @@
 #' @title Get top document authors over a time period. Only available for social posts.
 #' @description interval_document_authors() generates a data frame containing the authors of documents written about a keyword or search id during an interval of time
 #' @param keyword the keyword you want to explore, e.g. "iphone"
-#' @param search_id search ID 
+#' @param search_id an ID for a search in Meltwater
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
 #' @param granularity defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are available.
 #'
-#' @examples
-#' df <- interval_document_authors(keyword = "demoskop", start_date = "2017-07-01", end_date = "2017-07-13", type = "news_article")
-#' @import dplyr httr purrr chron
+#' @import dplyr httr purrr chron jsonlite tidyr
 #'
+#' @export
 interval_document_authors <- function(start_date, end_date, keyword = NULL, search_id = NULL, granularity = "DAY"){
   if(is.null(keyword) & is.null(search_id)){
     stop("Please provide a keyword or search ID")

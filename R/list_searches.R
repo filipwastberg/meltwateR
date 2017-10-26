@@ -4,8 +4,8 @@
 #'
 #' @examples
 #' df <- list_searches()
-#' @import dplyr httr purrr chron
-#'
+#' @import dplyr httr purrr chron jsonlite tidyr
+#' @export
 list_searches <- function(include_query = "false"){
   # manipulation of URL
     url <- paste0("https://api.meltwater.com/search/v1/searches?include_query=", include_query)

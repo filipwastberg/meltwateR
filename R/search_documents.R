@@ -1,13 +1,17 @@
 #' Search documents
 #' @description search_documents() enables you to search every document containg a keyword during a specific time interval
 #' @param keyword the keyword you want to explore
-#' @param search_id a search ID
+#' @param search_id an ID for a search in Meltwater
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
 #' @param type "news" or "social"
+#' @param page_size number of rows in data frame, max is 1000.
 #'
-#' @examples df <- search_documents(start_date = "2017-07-01", end_date = "2017-07-13",keyword = "demoskop", type = "news")
-#' @import dplyr httr purrr chron
+#' @examples df <- search_documents(start_date = "2017-07-01",
+#'  end_date = "2017-07-13",keyword = "demoskop", type = "news")
+#' @import dplyr httr purrr chron jsonlite tidyr
+#' 
+#' @export
 
 search_documents <- function(start_date, end_date, keyword = NULL, search_id = NULL, type = "news", page_size = "30"){
 

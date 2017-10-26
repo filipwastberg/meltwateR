@@ -1,14 +1,15 @@
 #' @title Get document counts over a time period
 #' @description interval_document_count() generates a data frame containing the number of documents written about a keyword or search id during an interval of time
 #' @param keyword the keyword you want to explore, e.g. "iphone"
-#' @param search_id search ID 
+#' @param search_id an ID for a search in Meltwater 
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format'
 #' @param granularity defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are possible
 #' @param type defaults to NULL and returns "all", can be news" or "social"
 #'
-#' @examples df <- interval_document_count(start_date = "2017-07-01", end_date = "2017-07-13", keyword = "demoskop", type = "news")
-#' @import dplyr httr purrr chron
+#' @import dplyr httr purrr chron jsonlite tidyr
+#' 
+#' @export
 #'
 interval_document_count <- function(start_date, end_date, keyword = NULL, search_id = NULL, granularity = "DAY", type = "news"){
   # manipulation of URL

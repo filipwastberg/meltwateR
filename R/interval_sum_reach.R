@@ -1,13 +1,17 @@
 #' @title Search counts of keyword during time interval
 #' @description interval_sum_reach() generates a data frame with the sum of reach over a period for a keyword
 #' @param keyword the keyword you want to explore, e.g. "iphone"
+#' @param search_id an ID for a search in Meltwater
 #' @param start_date start date, in "1900-01-01" format
 #' @param end_date end date, in "1900-01-01" format
 #' @param type defaults to NULL and returns "all", can be news" or "social"
 #' @param granularity defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are possible.
 #'
-#' @examples df <- interval_sum_reach(start_date = "2017-07-01", keyword = "demoskop", type = "news", granularity = "DAY")
-#' @import dplyr httr purrr chron
+#' @examples df <- interval_sum_reach(start_date = "2017-07-01",
+#'  keyword = "demoskop", type = "news", granularity = "DAY")
+#' @import dplyr httr purrr chron jsonlite tidyr
+#' 
+#' @export
 #'
 interval_sum_reach <- function(start_date, end_date, keyword = NULL, search_id = NULL, type = NULL, granularity = "DAY"){
 # manipulation of URL

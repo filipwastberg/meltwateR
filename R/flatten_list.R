@@ -2,9 +2,11 @@
 #' @description flatten_list() flattens a list to a data frame
 #' @param main_list a list to flatten
 #'
+#' @import utils
+#' @export
 # Original function from https://stackoverflow.com/a/35531296/5094439
 
-tl <- function(e) { if (is.null(e)) return(NULL); ret <- typeof(e); if (ret == 'list' && !is.null(names(e))) ret <- list(type='namedlist') else ret <- list(type=ret,len=length(e)); ret; };
+tl <- function(e) {if (is.null(e)) return(NULL); ret <- typeof(e); if (ret == 'list' && !is.null(names(e))) ret <- list(type='namedlist') else ret <- list(type=ret,len=length(e)); ret; };
 mkcsv <- function(v) paste0(collapse=',',v);
 keyListToStr <- function(keyList) paste0(collapse='','/',sapply(keyList,function(key) if (is.null(key)) '*' else paste0(collapse=',',key)));
 

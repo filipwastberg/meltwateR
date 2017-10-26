@@ -14,13 +14,10 @@ interval_document_authors(start_date, end_date, keyword = NULL,
 
 \item{keyword}{the keyword you want to explore, e.g. "iphone"}
 
-\item{search_id}{search ID}
+\item{search_id}{an ID for a search in Meltwater}
 
 \item{granularity}{defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are available.}
 }
 \description{
 interval_document_authors() generates a data frame containing the authors of documents written about a keyword or search id during an interval of time
-}
-\examples{
-df <- interval_document_authors(keyword = "demoskop", start_date = "2017-07-01", end_date = "2017-07-13", type = "news_article")
 }

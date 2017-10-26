@@ -14,7 +14,7 @@ interval_document_count(start_date, end_date, keyword = NULL,
 
 \item{keyword}{the keyword you want to explore, e.g. "iphone"}
 
-\item{search_id}{search ID}
+\item{search_id}{an ID for a search in Meltwater}
 
 \item{granularity}{defaults to "DAY" but "HOUR", "DAY", "WEEK" and "MONTH" are possible}
 
@@ -22,7 +22,4 @@ interval_document_count(start_date, end_date, keyword = NULL,
 }
 \description{
 interval_document_count() generates a data frame containing the number of documents written about a keyword or search id during an interval of time
-}
-\examples{
-df <- interval_document_count(start_date = "2017-07-01", end_date = "2017-07-13", keyword = "demoskop", type = "news")
 }

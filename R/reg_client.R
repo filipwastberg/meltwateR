@@ -5,7 +5,9 @@
 #' @param username your username, most likely your e-mail
 #' @param password your Meltwater password
 #'
-#' @import httr
+#' @import httr jsonlite utils
+#' 
+#' @export
 
 reg_client <- function(user_key, username, password){
 id_secret <- POST(url = "https://api.meltwater.com/v1/clients",

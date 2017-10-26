@@ -14,13 +14,16 @@ search_documents(start_date, end_date, keyword = NULL, search_id = NULL,
 
 \item{keyword}{the keyword you want to explore}
 
-\item{search_id}{a search ID}
+\item{search_id}{an ID for a search in Meltwater}
 
 \item{type}{"news" or "social"}
+
+\item{page_size}{number of rows in data frame, max is 1000.}
 }
 \description{
 search_documents() enables you to search every document containg a keyword during a specific time interval
 }
 \examples{
-df <- search_documents(start_date = "2017-07-01", end_date = "2017-07-13",keyword = "demoskop", type = "news")
+df <- search_documents(start_date = "2017-07-01",
+ end_date = "2017-07-13",keyword = "demoskop", type = "news")
 }
