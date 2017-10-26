@@ -56,7 +56,10 @@ interval_document_count <- function(start_date, end_date, keyword = NULL, search
       map_df(transpose) %>%
       as.data.frame()
     
-    df$count <- flatten_list(df$count)
+    count <- flatten_list(df$count)
+    
+    df <- cbind(df, count) %>%
+      select(-count)
     
     df$time <- substring(df$time, 1, 10) %>%
       as.Date()
