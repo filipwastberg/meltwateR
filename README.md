@@ -1,3 +1,5 @@
+# Meltwater API is deprecated so this package does not work anymore
+
 ## Installation
 Install meltwateR with package `devtools` and `install_github()`
 
